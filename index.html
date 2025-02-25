@@ -1,3 +1,4 @@
+<!-- new -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,9 +192,19 @@
             <div class="row">
                 <div class="contact-left">
                     <h1 class="sub-title">Contact Us</h1>
-                    <p><i class="fa-solid fa-paper-plane"></i>appxora@gmail.com </p>
-                    <p><i class="fa-solid fa-phone"></i>+233 543290219</p>
-                    <p><i class="fa-solid fa-phone"></i>+1(442) 385-4991</p>
+                    
+                        
+                    <a href="#" id="tel" onclick="sendEmail('appxora@gmail.com')"><i class="fa-solid fa-paper-plane"></i>appxora@gmail.com</a>
+                    <br>
+                    
+                    <a href="#" id="tel" onclick="callNumber('+233543290219')">
+                        <i class="fa-solid fa-phone"></i> +233 543 290 219
+                    </a><br>
+                    
+                    <a href="#" id="tel" onclick="callNumber('+14423854991')">
+                        <i class="fa-solid fa-phone"></i> +1 (442) 385-4991
+                    </a>
+                    
                     <div class="social-icons">
                         <a href="https://www.facebook.com/appxora?mibextid=wwXIfr"><i class="fa-brands fa-facebook"></i></a>
                         <a href="https://www.instagram.com/appxora/profilecard/?igsh=NTc4MTIwNjQ2YQ=="><i class="fa-brands fa-instagram"></i></a>
@@ -251,6 +262,18 @@
             sidemen.style.right = "-200px";
              
         }
+
+        // Function to initiate a phone call
+        function callNumber(phoneNumber) {
+            window.location.href = `tel:${phoneNumber}`;
+        }
+
+        // Function to send an email
+        function sendEmail(email) {
+            window.location.href = `mailto:${email}`;
+        }
+
+        
     </script>
 
 <script>
