@@ -16,7 +16,7 @@ body{
    height: 100vh;
    background-image: url(home.jpg);
    background-size: cover;
-   background-position: center;
+   background-position: top;
 }
 .container{
    padding: 10px 10%;
@@ -58,18 +58,66 @@ nav ul li a::after{
 nav ul li a:hover::after{
    width: 100%;
 }
-.header-text{
-    margin-top: 20%;
-    font-size: 20px;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+/* Header text styling */
+.header-text {
+   margin-top: 20%;
+   font-size: 20px;
+   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+   text-align: left;
+}
 
+/* Main heading */
+.header-text h1 {
+   font-size: 50px;
+   margin-top: 20px;
+   overflow: hidden; /* For typewriter effect */
+   white-space: nowrap;
+   animation: typewriter 3s steps(20) 1s both;
+    /* Blinking cursor only during the typewriter animation */
+    border-right: 2px solid #ff004f;
+    animation: typewriter 3s steps(20) 1s both, blink 0.7s steps(2, start) 3s;
 }
-.header-text h1{
-    font-size: 50px;
-    margin-top: 20px;
 }
-.header-text h1 span{
+
+.header-text h1 span {
    color: #ff004f;
+}
+
+/* Fade-in effect for the paragraph */
+.fade-in {
+   opacity: 0;
+   animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Slide-up effect for the subheading */
+.slide-up {
+   transform: translateY(20px);
+   opacity: 0;
+   animation: slideUp 2s ease-in-out 1.5s forwards;
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+   0% { opacity: 0; }
+   100% { opacity: 1; }
+}
+
+/* Keyframes for slide-up */
+@keyframes slideUp {
+   0% { opacity: 0; transform: translateY(-20px); }
+   100% { opacity: 1; transform: translateY(20); }
+}
+
+/* Keyframes for typewriter effect */
+@keyframes typewriter {
+   from { width: 0; }
+   to { width: 100%; }
+}
+
+/* Blinking cursor effect */
+@keyframes blink {
+   50% { border-color: transparent; }
+   100% { border-color: transparent; } 
 }
 
 nav span{
@@ -206,6 +254,7 @@ nav span{
    margin-top: 50px;
 
 }
+
 .work{
    border-radius: 10px;
    position: relative;
