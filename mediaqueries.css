@@ -42,7 +42,7 @@
  
  
     #about {
-       padding: 40px 0;
+       padding: 40px 0 ;
    }
  
    .row {
@@ -58,11 +58,11 @@
    .about-col-1 img {
        display: block;
        margin-bottom: 20px;
-       width: 80%;
+       width: 100%;
    }
  
    .about-col-2 {
-       padding: 0 10px;
+       padding: 0 10px 70px 0;
        text-align: left;
    }
  
