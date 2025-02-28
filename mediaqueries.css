@@ -1,0 +1,165 @@
+/*------ css for small screens------*/
+
+
+@media only screen and (max-width: 767px){
+    
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    #header{
+       background-position: calc(100% + 160px) center;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px ;
+    } 
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px ;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    nav ul li{
+ 
+        display: block;
+        margin: 25px ;
+    }
+    nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+ 
+ 
+    #about {
+       padding: 40px 0;
+   }
+ 
+   .row {
+       flex-direction: column;
+       align-items: flex-start;
+   }
+ 
+   .about-col-1, .about-col-2 {
+       flex-basis: 100%;
+       width: 100%;
+   }
+ 
+   .about-col-1 img {
+       display: block;
+       margin-bottom: 20px;
+       width: 80%;
+   }
+ 
+   .about-col-2 {
+       padding: 0 10px;
+       text-align: left;
+   }
+ 
+   .sub-title {
+       font-size: 30px;
+   }
+ 
+   hr {
+       width: 50%;
+   }
+ 
+   /* Styled scrollable tab-titles */
+   .tab-container {
+    position: relative;
+    overflow: hidden; /* Ensures fade effect works properly */
+ }
+ 
+ .tab-titles {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #ff004f #333;
+    scroll-behavior: smooth;
+    padding-bottom: 5px;
+    scroll-snap-type: x mandatory;
+    position: relative;
+ }
+ 
+ .tab-titles::-webkit-scrollbar {
+    height: 5px;
+ }
+ 
+ .tab-titles::-webkit-scrollbar-thumb {
+    background: #ff004f;
+    border-radius: 10px;
+ }
+ 
+ .tab-titles::-webkit-scrollbar-track {
+    background: #333;
+ }
+ 
+ .tab-links {
+    font-size: 16px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: center;
+ }
+ 
+ .tab-links.active-link {
+    font-weight: bold;
+    color: #ff004f;
+    transform: scale(1.1);
+ }
+ 
+ /* Gradient Fade Effect on Text */
+ .tab-container::before,
+ .tab-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+ }
+ 
+ /* Left Fade */
+ .tab-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(35, 18, 18, 1), rgba(35, 18, 18, 0));
+ }
+ 
+ /* Right Fade */
+ .tab-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(35, 18, 18, 1), rgba(35, 18, 18, 0));
+ }
+ 
+ 
+ 
+ 
+ 
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+    .copyright{
+        font-size: 14px;
+    }
+ 
+    #msg{
+       color: #61b752;
+       margin-top: -10px;
+       display: block;
+    }
+ }
