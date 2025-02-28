@@ -10,27 +10,33 @@ var menuLinks = document.querySelectorAll("#sidemenu a"); // All links inside th
 // Function to open the menu
 
 function openmenu() {
-  sidemen.style.right = "0";
-  sidemen.style.display = "block";
-  menuToggle.style.display = "none"; // Hide menu button
+  if (window.innerWidth <= 767) {
+    // Ensure it only runs on mobile
+    sidemen.style.right = "0";
+    sidemen.style.display = "block";
+    menuToggle.style.display = "none"; // Hide menu button
 
-  closeMenuBtn.style.display = "block"; // Show close button
+    closeMenuBtn.style.display = "block"; // Show close button
 
-  document.body.style.overflow = "hidden"; // Prevent background scrolling
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
 
-  sidemen.classList.add("active");
+    sidemen.classList.add("active");
+  }
 } // Function to close the menu
 
 
 function closemenu() {
-  sidemen.style.right = "-100%"; // Completely hide the menu
+  if (window.innerWidth <= 767) {
+    // Ensure it only runs on mobile
+    sidemen.style.right = "-100%"; // Fully hide the menu
 
-  document.body.style.overflow = ""; // Restore background scrolling
+    document.body.style.overflow = ""; // Restore scrolling
 
-  sidemen.classList.remove("active");
-  menuToggle.style.display = "block"; // Show menu button
+    sidemen.classList.remove("active");
+    menuToggle.style.display = "block"; // Show menu button
 
-  closeMenuBtn.style.display = "none"; // Hide close button
+    closeMenuBtn.style.display = "none"; // Hide close button
+  }
 } // Close menu when clicking a link inside it
 
 
@@ -118,96 +124,110 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 }); // script to handle the about page animation
+// document.addEventListener("DOMContentLoaded", function () {
+//     const aboutSection = document.querySelector("#about");
+//     const aboutImage = document.querySelector(".about-col-1 img");
+//     const aboutText = document.querySelector(".about-col-2");
+//     const tabTitles = document.querySelector(".tab-titles");
+//     function revealOnScroll() {
+//         const sectionPos = aboutSection.getBoundingClientRect().top;
+//         const screenPos = window.innerHeight / 1.3; // Triggers slightly before full view
+//         if (sectionPos < screenPos) {
+//             aboutSection.classList.add("show");
+//             aboutImage.classList.add("show");
+//             aboutText.classList.add("show");
+//             tabTitles.classList.add("show");
+//         }
+//     }
+//     window.addEventListener("scroll", revealOnScroll);
+//     revealOnScroll(); // Run once in case it's already in view
+// });
+// script for handling services animation
+// document.addEventListener("DOMContentLoaded", function () {
+//     const serviceSection = document.querySelector("#service");
+//     const serviceCards = document.querySelectorAll(".services-list div");
+//     function revealOnScroll() {
+//         const sectionPos = serviceSection.getBoundingClientRect().top;
+//         const screenPos = window.innerHeight / 1.3;
+//         if (sectionPos < screenPos) {
+//             serviceSection.classList.add("show");
+//             // Add staggered delay for each service card
+//             serviceCards.forEach((card, index) => {
+//                 setTimeout(() => {
+//                     card.classList.add("show");
+//                 }, index * 200); // 200ms delay per card
+//             });
+//         }
+//     }
+//     window.addEventListener("scroll", revealOnScroll);
+//     revealOnScroll(); // Run once in case it's already in view
+// });
+// script to handle animation of portfolio
+// document.addEventListener("DOMContentLoaded", function () {
+//     const portfolioSection = document.querySelector("#portfolio");
+//     const portfolioItems = document.querySelectorAll(".portfolio-list .work");
+//     function revealOnScroll() {
+//         const sectionPos = portfolioSection.getBoundingClientRect().top;
+//         const screenPos = window.innerHeight / 1.3;
+//         if (sectionPos < screenPos) {
+//             portfolioSection.classList.add("show");
+//             // Add staggered effect for each portfolio card
+//             portfolioItems.forEach((item, index) => {
+//                 setTimeout(() => {
+//                     item.classList.add("show");
+//                 }, index * 200); // 200ms delay per item
+//             });
+//         }
+//     }
+//     window.addEventListener("scroll", revealOnScroll);
+//     revealOnScroll(); // Run once in case it's already in view
+// });
+// script to handle contact section
+// document.addEventListener("DOMContentLoaded", function () {
+//     const contactSection = document.querySelector("#contact");
+//     const contactLeft = document.querySelector(".contact-left");
+//     const contactRight = document.querySelector(".contact-right");
+//     function revealOnScroll() {
+//         const sectionPos = contactSection.getBoundingClientRect().top;
+//         const screenPos = window.innerHeight / 1.3;
+//         if (sectionPos < screenPos) {
+//             contactSection.classList.add("show");
+//             // Delay animation for left and right elements
+//             setTimeout(() => contactLeft.classList.add("show"), 200);
+//             setTimeout(() => contactRight.classList.add("show"), 400);
+//         }
+//     }
+//     window.addEventListener("scroll", revealOnScroll);
+//     revealOnScroll(); // Run once in case it's already in view
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
-  var aboutSection = document.querySelector("#about");
-  var aboutImage = document.querySelector(".about-col-1 img");
-  var aboutText = document.querySelector(".about-col-2");
-  var tabTitles = document.querySelector(".tab-titles");
+  var animatedSections = document.querySelectorAll("#about, #service, #portfolio, #contact");
+  var animatedElements = document.querySelectorAll(".about-col-1 img, .about-col-2, .tab-titles, .services-list div, .work, .contact-left, .contact-right");
 
-  function revealOnScroll() {
-    var sectionPos = aboutSection.getBoundingClientRect().top;
-    var screenPos = window.innerHeight / 1.3; // Triggers slightly before full view
+  function checkScroll() {
+    animatedSections.forEach(function (section) {
+      var sectionPos = section.getBoundingClientRect().top;
+      var screenPos = window.innerHeight * 0.8;
 
-    if (sectionPos < screenPos) {
-      aboutSection.classList.add("show");
-      aboutImage.classList.add("show");
-      aboutText.classList.add("show");
-      tabTitles.classList.add("show");
-    }
+      if (sectionPos < screenPos) {
+        section.classList.add("show");
+      } else {
+        section.classList.remove("show"); // Reset when out of view
+      }
+    });
+    animatedElements.forEach(function (element) {
+      var elementPos = element.getBoundingClientRect().top;
+      var screenPos = window.innerHeight * 0.85;
+
+      if (elementPos < screenPos) {
+        element.classList.add("show");
+      } else {
+        element.classList.remove("show"); // Reset when out of view
+      }
+    });
   }
 
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run once in case it's already in view
-}); // script for handling services animation
-
-document.addEventListener("DOMContentLoaded", function () {
-  var serviceSection = document.querySelector("#service");
-  var serviceCards = document.querySelectorAll(".services-list div");
-
-  function revealOnScroll() {
-    var sectionPos = serviceSection.getBoundingClientRect().top;
-    var screenPos = window.innerHeight / 1.3;
-
-    if (sectionPos < screenPos) {
-      serviceSection.classList.add("show"); // Add staggered delay for each service card
-
-      serviceCards.forEach(function (card, index) {
-        setTimeout(function () {
-          card.classList.add("show");
-        }, index * 200); // 200ms delay per card
-      });
-    }
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run once in case it's already in view
-}); // script to handle animation of portfolio
-
-document.addEventListener("DOMContentLoaded", function () {
-  var portfolioSection = document.querySelector("#portfolio");
-  var portfolioItems = document.querySelectorAll(".portfolio-list .work");
-
-  function revealOnScroll() {
-    var sectionPos = portfolioSection.getBoundingClientRect().top;
-    var screenPos = window.innerHeight / 1.3;
-
-    if (sectionPos < screenPos) {
-      portfolioSection.classList.add("show"); // Add staggered effect for each portfolio card
-
-      portfolioItems.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("show");
-        }, index * 200); // 200ms delay per item
-      });
-    }
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run once in case it's already in view
-}); // script to handle contact section
-
-document.addEventListener("DOMContentLoaded", function () {
-  var contactSection = document.querySelector("#contact");
-  var contactLeft = document.querySelector(".contact-left");
-  var contactRight = document.querySelector(".contact-right");
-
-  function revealOnScroll() {
-    var sectionPos = contactSection.getBoundingClientRect().top;
-    var screenPos = window.innerHeight / 1.3;
-
-    if (sectionPos < screenPos) {
-      contactSection.classList.add("show"); // Delay animation for left and right elements
-
-      setTimeout(function () {
-        return contactLeft.classList.add("show");
-      }, 200);
-      setTimeout(function () {
-        return contactRight.classList.add("show");
-      }, 400);
-    }
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run once in case it's already in view
+  window.addEventListener("scroll", checkScroll);
+  checkScroll(); // Run once in case elements are already in view
 });

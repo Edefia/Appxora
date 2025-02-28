@@ -1,7 +1,30 @@
+@media only screen and (min-width: 768px) {
+   /* Hide the menu toggle icons on desktop */
+   .fa-bars, 
+   .fa-xmark {
+       display: none !important;
+   }
+
+   /* Ensure nav ul is visible normally */
+   nav ul {
+       position: static !important;
+       width: auto !important;
+       height: auto !important;
+       display: flex !important;
+       background: transparent !important;
+   }
+}
+
+
 /*------ css for small screens------*/
 
 
 @media only screen and (max-width: 767px){
+   /* Ensure no horizontal scrolling */
+   html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+  }
     body {
         overflow-x: hidden; /* Prevent horizontal scrolling */
         -webkit-overflow-scrolling: touch; /* Enables smooth momentum-based scrolling on mobile */
@@ -46,7 +69,7 @@
 #sidemenu {
     position: fixed;
     top: 0;
-    right: -100%; /* Fully hidden */
+    right: -100vw; /* Fully hidden */
     overflow-x: hidden;
     display: none;
     width: 200px;

@@ -46,9 +46,9 @@ nav{
    flex-wrap: wrap;
 }
 nav img{
-   width: 100px;
-   height: 70px;
-   border-radius: 15px;
+   height: 60px;
+   padding-top: 10px;
+
 }
 
 nav ul li{
@@ -687,6 +687,24 @@ form .btn2{
 .copyright p{
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    font-size: clamp(9px, 2.5vw, 13px);
+}
+
+
+/* Default: Elements start hidden */
+#about, #service, #portfolio, #contact,
+.about-col-1 img, .about-col-2, .tab-titles,
+.services-list div, .work, .contact-left, .contact-right {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Show animation when elements enter viewport */
+#about.show, #service.show, #portfolio.show, #contact.show,
+.about-col-1 img.show, .about-col-2.show, .tab-titles.show,
+.services-list div.show, .work.show, .contact-left.show, .contact-right.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
