@@ -2,7 +2,9 @@
 
 
 @media only screen and (max-width: 767px){
-    
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
     .header-text{
         margin-top: 100%;
         font-size: 16px;
@@ -29,7 +31,7 @@
         transition: right 0.5s;
     }
     nav ul li{
- 
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         display: block;
         margin: 25px ;
     }
@@ -39,7 +41,93 @@
         left: 25px;
         cursor: pointer;
     }
+    /* Hide menu off-screen by default */
+#sidemenu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Fully hidden */
+    overflow-x: hidden;
+    display: none;
+    width: 200px;
+    height: 100vh;
+    background: #231212;
+    transition: right 0.5s ease-in-out;
+    z-index: 1000;
+    /* opacity: 0.9; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
  
+ /* Show menu when active */
+ #sidemenu.active {
+    right: 0;
+     opacity: 1;
+ }
+ /* Initially hide and position menu items off-screen */
+ #sidemenu li {
+    list-style: none;
+    margin: 20px;
+    opacity: 0;
+    transform: translateX(50px); /* Start slightly off-screen */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+ }
+ 
+ /* Animate menu items when the menu opens */
+ #sidemenu.active li {
+    opacity: 1;
+    transform: translateX(0); /* Move into view */
+ }
+ /* Add staggered effect for each menu item */
+ #sidemenu.active li:nth-child(1) {
+    transition-delay: 0.1s;
+ }
+ #sidemenu.active li:nth-child(2) {
+    transition-delay: 0.2s;
+ }
+ #sidemenu.active li:nth-child(3) {
+    transition-delay: 0.3s;
+ }
+ #sidemenu.active li:nth-child(4) {
+    transition-delay: 0.4s;
+ }
+ #sidemenu.active li:nth-child(5) {
+    transition-delay: 0.5s;
+ }
+ 
+ /* Ensure menu toggle button is visible */
+ .fa-bars {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1101;
+    color: white;
+    display: block; /* Show by default */
+ }
+ 
+ /* Close button inside menu */
+ .fa-xmark {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    display: none; /* Hide by default */
+ }
+ 
+  /* When menu is open, show `fa-xmark` and hide `fa-bars` */
+  #sidemenu.active ~ .fa-bars {
+    display: none;
+}
+
+#sidemenu.active .fa-xmark {
+    display: block;
+}
  
     #about {
        padding: 40px 0 ;

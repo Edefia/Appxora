@@ -2,13 +2,48 @@
 
 // script to handle sidemenu
 var sidemen = document.getElementById("sidemenu");
+var menuToggle = document.querySelector(".fa-bars"); // Open button
+
+var closeMenuBtn = document.querySelector(".fa-xmark"); // Close button
+// Function to open the menu
 
 function openmenu() {
   sidemen.style.right = "0";
-}
+  sidemen.style.display = "block";
+  menuToggle.style.display = "none"; // Hide menu button
+
+  closeMenuBtn.style.display = "block"; // Show close button
+
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+
+  sidemen.classList.add("active");
+} // Function to close the menu
+
 
 function closemenu() {
-  sidemen.style.right = "-200px";
+  sidemen.style.right = "-100%"; // Completely hide the menu
+
+  document.body.style.overflow = ""; // Restore background scrolling
+
+  sidemen.classList.remove("active");
+  menuToggle.style.display = "block"; // Show menu button
+
+  closeMenuBtn.style.display = "none"; // Hide close button
+} // Close menu when clicking outside of it
+
+
+document.addEventListener("click", function (event) {
+  if (!sidemen.contains(event.target) && !menuToggle.contains(event.target)) {
+    closemenu();
+  }
+}); // Add event listeners to menu buttons
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", openmenu);
+}
+
+if (closeMenuBtn) {
+  closeMenuBtn.addEventListener("click", closemenu);
 } // Script to handle call and email triggers apps
 // Function to initiate a phone call
 
