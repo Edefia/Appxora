@@ -2,6 +2,7 @@
 var sidemen = document.getElementById("sidemenu");
 var menuToggle = document.querySelector(".fa-bars"); // Open button
 var closeMenuBtn = document.querySelector(".fa-xmark"); // Close button
+var menuLinks = document.querySelectorAll("#sidemenu a"); // All links inside the menu
 
 // Function to open the menu
 function openmenu() {
@@ -21,6 +22,12 @@ function closemenu() {
     menuToggle.style.display = "block"; // Show menu button
     closeMenuBtn.style.display = "none"; // Hide close button
 }
+// Close menu when clicking a link inside it
+menuLinks.forEach(link => {
+    link.addEventListener("click", function () {
+        closemenu(); // Close menu
+    });
+});
 
 // Close menu when clicking outside of it
 document.addEventListener("click", function (event) {

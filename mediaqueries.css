@@ -4,6 +4,7 @@
 @media only screen and (max-width: 767px){
     body {
         overflow-x: hidden; /* Prevent horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Enables smooth momentum-based scrolling on mobile */
     }
     .header-text{
         margin-top: 100%;
@@ -53,7 +54,6 @@
     background: #231212;
     transition: right 0.5s ease-in-out;
     z-index: 1000;
-    /* opacity: 0.9; */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
      flex-direction: column;
@@ -64,7 +64,7 @@
  /* Show menu when active */
  #sidemenu.active {
     right: 0;
-     opacity: 1;
+     opacity: 0.9;
  }
  /* Initially hide and position menu items off-screen */
  #sidemenu li {
@@ -100,8 +100,9 @@
  /* Ensure menu toggle button is visible */
  .fa-bars {
     position: fixed;
-    top: 20px;
+    /* top: 20px; */
     right: 20px;
+    padding: 10px 5%;
     font-size: 18px;
     cursor: pointer;
     z-index: 1101;
