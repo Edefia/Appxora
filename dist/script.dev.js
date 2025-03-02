@@ -70,24 +70,52 @@ function callNumber(phoneNumber) {
 function sendEmail(email) {
   window.location.href = "mailto:".concat(email);
 } // Script to handle form
+// const scriptURL = 'https://script.google.com/macros/s/AKfycbx57QUQIOr31Wl4v6X3zfUViQZx_RWhRL4JsZevHG0dBxge1PbKb3B5mfa06bY9gIzD/exec'
+//     const form = document.forms['submit-to-google-sheet']
+//     const msg = document.getElementById("msg")
+//     form.addEventListener('submit', e => {
+//       e.preventDefault()
+//       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+//         .then(response => {
+//             msg.innerHTML = "Message sent succesfully"
+//             setTimeout(function(){
+//                 msg.innerHTML = ""
+//             }, 5000)
+//             form.reset()
+//         })
+//         .catch(error => console.error('Error!', error.message))
+//     })
 
 
-var scriptURL = 'https://script.google.com/macros/s/AKfycbx57QUQIOr31Wl4v6X3zfUViQZx_RWhRL4JsZevHG0dBxge1PbKb3B5mfa06bY9gIzD/exec';
-var form = document.forms['submit-to-google-sheet'];
-var msg = document.getElementById("msg");
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  fetch(scriptURL, {
-    method: 'POST',
-    body: new FormData(form)
-  }).then(function (response) {
-    msg.innerHTML = "Message sent succesfully";
-    setTimeout(function () {
-      msg.innerHTML = "";
-    }, 5000);
-    form.reset();
-  })["catch"](function (error) {
-    return console.error('Error!', error.message);
+document.addEventListener("DOMContentLoaded", function () {
+  var contactForm = document.forms["submit-to-google-sheet"];
+  var msg = document.getElementById("msg");
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var formData = new FormData(contactForm); // ✅ Replace with your Google Form POST URL
+
+    var googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLScveozYvHRoYbGG4_VB5t7Cit58ArKgGB0DcWeyDgQZ1v1x1g/formResponse"; // ✅ Replace with actual entry IDs
+
+    var formPayload = new URLSearchParams();
+    formPayload.append("entry.1053221750", formData.get("Name")); // Name field
+
+    formPayload.append("entry.998078091", formData.get("Email")); // Email field
+
+    formPayload.append("entry.1458466013", formData.get("Message")); // Message field
+
+    fetch(googleFormURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formPayload
+    }).then(function () {
+      msg.innerHTML = "Message sent successfully!";
+      setTimeout(function () {
+        return msg.innerHTML = "";
+      }, 5000);
+      contactForm.reset();
+    })["catch"](function (error) {
+      return console.error("Error sending message:", error);
+    });
   });
 }); // Script to handle about page tab-titles
 
@@ -123,83 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       activeIndex = index;
     });
   });
-}); // script to handle the about page animation
-// document.addEventListener("DOMContentLoaded", function () {
-//     const aboutSection = document.querySelector("#about");
-//     const aboutImage = document.querySelector(".about-col-1 img");
-//     const aboutText = document.querySelector(".about-col-2");
-//     const tabTitles = document.querySelector(".tab-titles");
-//     function revealOnScroll() {
-//         const sectionPos = aboutSection.getBoundingClientRect().top;
-//         const screenPos = window.innerHeight / 1.3; // Triggers slightly before full view
-//         if (sectionPos < screenPos) {
-//             aboutSection.classList.add("show");
-//             aboutImage.classList.add("show");
-//             aboutText.classList.add("show");
-//             tabTitles.classList.add("show");
-//         }
-//     }
-//     window.addEventListener("scroll", revealOnScroll);
-//     revealOnScroll(); // Run once in case it's already in view
-// });
-// script for handling services animation
-// document.addEventListener("DOMContentLoaded", function () {
-//     const serviceSection = document.querySelector("#service");
-//     const serviceCards = document.querySelectorAll(".services-list div");
-//     function revealOnScroll() {
-//         const sectionPos = serviceSection.getBoundingClientRect().top;
-//         const screenPos = window.innerHeight / 1.3;
-//         if (sectionPos < screenPos) {
-//             serviceSection.classList.add("show");
-//             // Add staggered delay for each service card
-//             serviceCards.forEach((card, index) => {
-//                 setTimeout(() => {
-//                     card.classList.add("show");
-//                 }, index * 200); // 200ms delay per card
-//             });
-//         }
-//     }
-//     window.addEventListener("scroll", revealOnScroll);
-//     revealOnScroll(); // Run once in case it's already in view
-// });
-// script to handle animation of portfolio
-// document.addEventListener("DOMContentLoaded", function () {
-//     const portfolioSection = document.querySelector("#portfolio");
-//     const portfolioItems = document.querySelectorAll(".portfolio-list .work");
-//     function revealOnScroll() {
-//         const sectionPos = portfolioSection.getBoundingClientRect().top;
-//         const screenPos = window.innerHeight / 1.3;
-//         if (sectionPos < screenPos) {
-//             portfolioSection.classList.add("show");
-//             // Add staggered effect for each portfolio card
-//             portfolioItems.forEach((item, index) => {
-//                 setTimeout(() => {
-//                     item.classList.add("show");
-//                 }, index * 200); // 200ms delay per item
-//             });
-//         }
-//     }
-//     window.addEventListener("scroll", revealOnScroll);
-//     revealOnScroll(); // Run once in case it's already in view
-// });
-// script to handle contact section
-// document.addEventListener("DOMContentLoaded", function () {
-//     const contactSection = document.querySelector("#contact");
-//     const contactLeft = document.querySelector(".contact-left");
-//     const contactRight = document.querySelector(".contact-right");
-//     function revealOnScroll() {
-//         const sectionPos = contactSection.getBoundingClientRect().top;
-//         const screenPos = window.innerHeight / 1.3;
-//         if (sectionPos < screenPos) {
-//             contactSection.classList.add("show");
-//             // Delay animation for left and right elements
-//             setTimeout(() => contactLeft.classList.add("show"), 200);
-//             setTimeout(() => contactRight.classList.add("show"), 400);
-//         }
-//     }
-//     window.addEventListener("scroll", revealOnScroll);
-//     revealOnScroll(); // Run once in case it's already in view
-// });
+}); //    script to handle all animations on viewport
 
 document.addEventListener("DOMContentLoaded", function () {
   var animatedSections = document.querySelectorAll("#about, #service, #portfolio, #contact");
@@ -230,4 +182,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", checkScroll);
   checkScroll(); // Run once in case elements are already in view
+}); // script to handle contact form animation
+
+document.addEventListener("DOMContentLoaded", function () {
+  var contactSection = document.querySelector("#contact");
+  var contactElements = document.querySelectorAll(".contact-left, .contact-right");
+
+  function checkScroll() {
+    var contactPos = contactSection.getBoundingClientRect().top;
+    var screenPos = window.innerHeight * 0.8;
+
+    if (contactPos < screenPos) {
+      contactSection.classList.add("show");
+      contactElements.forEach(function (el) {
+        return el.classList.add("show");
+      });
+    } else {
+      contactSection.classList.remove("show");
+      contactElements.forEach(function (el) {
+        return el.classList.remove("show");
+      });
+    }
+  }
+
+  window.addEventListener("scroll", checkScroll);
+  checkScroll(); // Run once on page load
 });
