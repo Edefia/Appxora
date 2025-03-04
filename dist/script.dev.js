@@ -69,22 +69,7 @@ function callNumber(phoneNumber) {
 
 function sendEmail(email) {
   window.location.href = "mailto:".concat(email);
-} // Script to handle form
-// const scriptURL = 'https://script.google.com/macros/s/AKfycbx57QUQIOr31Wl4v6X3zfUViQZx_RWhRL4JsZevHG0dBxge1PbKb3B5mfa06bY9gIzD/exec'
-//     const form = document.forms['submit-to-google-sheet']
-//     const msg = document.getElementById("msg")
-//     form.addEventListener('submit', e => {
-//       e.preventDefault()
-//       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-//         .then(response => {
-//             msg.innerHTML = "Message sent succesfully"
-//             setTimeout(function(){
-//                 msg.innerHTML = ""
-//             }, 5000)
-//             form.reset()
-//         })
-//         .catch(error => console.error('Error!', error.message))
-//     })
+} // Script to handle form data input
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -92,8 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var msg = document.getElementById("msg");
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    var formData = new FormData(contactForm); // ✅ Replace with your Google Form POST URL
-
+    var formData = new FormData(contactForm);
     var googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLScveozYvHRoYbGG4_VB5t7Cit58ArKgGB0DcWeyDgQZ1v1x1g/formResponse"; // ✅ Replace with actual entry IDs
 
     var formPayload = new URLSearchParams();
