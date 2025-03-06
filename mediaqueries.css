@@ -198,7 +198,7 @@
     overflow-y: hidden;
     white-space: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: #ff004f #333;
+    scrollbar-color: #00a8cc #333;
     scroll-behavior: smooth;
     padding-bottom: 5px;
     scroll-snap-type: x mandatory;
@@ -210,7 +210,7 @@
  }
  
  .tab-titles::-webkit-scrollbar-thumb {
-    background: #ff004f;
+    background: #00a8cc;
     border-radius: 10px;
  }
  
@@ -230,7 +230,7 @@
  
  .tab-links.active-link {
     font-weight: bold;
-    color: #ff004f;
+    color: #00a8cc;
     transform: scale(1.1);
  }
  
@@ -275,3 +275,91 @@
        display: block;
     }
  }
+
+
+
+ /* Media queries for tablet screens (768px - 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+   /* General Styles */
+   body {
+       font-size: 16px;
+   }
+
+   .container {
+       padding: 20px 5%;
+   }
+
+   /* Navigation */
+   nav ul {
+       display: flex;
+       flex-direction: row;
+       justify-content: space-around;
+       width: 100%;
+   }
+
+   .fa-bars, .fa-xmark {
+       display: none !important;
+   }
+
+   /* Header */
+   .header-text {
+       font-size: 18px;
+       text-align: left;
+       align-self: center;
+   }
+
+   .header-text h1 {
+       font-size: 40px;
+   }
+
+   /* About Section */
+   .row {
+       flex-direction: column;
+       align-items: center;
+       text-align: center;
+   }
+
+   .about-col-1, .about-col-2 {
+       flex-basis: 100%;
+       width: 90%;
+   }
+
+   .about-col-1 img {
+       width: 80%;
+       margin: 0 auto;
+   }
+   hr, .sub-title{
+      justify-self: center;
+   }
+
+
+   /* Services Section */
+   .services-list {
+       grid-template-columns: repeat(2, 1fr);
+       grid-gap: 20px;
+   }
+
+   .services-list div {
+       padding: 20px;
+   }
+
+   /* Portfolio */
+   .work-list {
+       grid-template-columns: repeat(2, 1fr);
+   }
+
+   /* Contact Section */
+   .contact-left, .contact-right {
+       flex-basis: 100%;
+       text-align: center;
+   }
+
+   .social-icons {
+       justify-content: center;
+   }
+
+   form input, form textarea {
+       width: 90%;
+   }
+}
