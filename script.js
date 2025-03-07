@@ -191,4 +191,43 @@ document.addEventListener("DOMContentLoaded", function () {
         checkScroll(); // Run once on page load
     });
     
+
+
+    // script to handle the "More" button in services sections
+    document.addEventListener("DOMContentLoaded", function () {
+        const moreButtons = document.querySelectorAll(".services-list div button");
+        
+        const descriptions = {
+            "ERP Solutions": "Our ERP solutions streamline business processes, integrating finance, HR, supply chain, and operations for maximum efficiency.",
+            "Web development": "We build secure, high-performance websites with custom front-end and back-end development, CMS solutions, and e-commerce features, ensuring mobile responsiveness and a seamless user experience.",
+            "Digital Marketing": "Leverage SEO, social media, and targeted ads to boost brand visibility and drive traffic to your business.",
+            "Graphic Designing": "From logos to marketing materials, we create visually stunning graphics that align with your brand identity.",
+            "Videography": "Professional video production services including promotional videos, corporate presentations, and animations.",
+            "Company Branding": "Craft a unique brand identity with strategic logo design, color schemes, and messaging tailored to your vision."
+        };
+        
+        moreButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const serviceBox = this.parentElement;
+                const serviceTitle = serviceBox.querySelector("h2").textContent.trim();
+                let moreText = serviceBox.querySelector(".more-text");
+                
+                if (!moreText) {
+                    moreText = document.createElement("p");
+                    moreText.classList.add("more-text");
+                    moreText.style.marginBottom = "5px"; // Add spacing between text and button
+                    moreText.innerHTML = descriptions[serviceTitle] || "More details about this service will be added soon.";
+                    serviceBox.insertBefore(moreText, button); // Insert text before the button
+                }
+                
+                if (moreText.style.display === "block") {
+                    moreText.style.display = "none";
+                    this.querySelector("p").textContent = "More";
+                } else {
+                    moreText.style.display = "block";
+                    this.querySelector("p").textContent = "Less";
+                }
+            });
+        });
+    });
     

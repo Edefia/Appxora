@@ -98,8 +98,8 @@ nav ul li a:hover::after{
    overflow: hidden;
    white-space: nowrap;
    animation: typewriter 3s steps(20) 1s both;
-   border-right: 2px solid #ff004f;
-   animation: typewriter 3s steps(20) 1s both, smoothBlink 1s ease-in-out 3s;
+   border-right: 2px solid transparent;
+   animation: typewriter 3s steps(10000) 1s both, smoothBlink 1s ease-in-out 3s;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -154,7 +154,7 @@ nav .fa-solid{
    display: none;
    }
 nav span{
-   color: #ff004f;
+   color: #00a8cc;;
 }
 .custom-shape-divider-bottom-1740669785 {
    position: absolute;
@@ -327,7 +327,7 @@ hr{
     background: #1b2838;
     padding: 40px;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     border-radius: 10px;
     transition: background 0.3s, transform 0.3s;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); /* Light glow effect */
@@ -358,6 +358,9 @@ hr{
    font-size: 50px;
    margin-bottom:  30px;
 }
+/* .services-list div p{
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+} */
 
 
 .services-list div button {
@@ -396,7 +399,7 @@ hr{
  .services-list div button p::before {
    position: absolute;
    /*   box-sizing: border-box; */
-   content: "More";
+   content: "";
    width: 0%;
    inset: 0;
    color: var(--hovered-color);
@@ -472,7 +475,7 @@ hr{
 .layer{
    width: 100%;
    height: 0;
-   background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+   background: linear-gradient(rgba(0, 0, 0, 0.7), #0077b6);
    border-radius: 10px;
    position: absolute;
    left: 0;
