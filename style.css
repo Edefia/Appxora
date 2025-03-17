@@ -333,7 +333,7 @@ hr{
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); /* Light glow effect */
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 1s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 /* When a card becomes visible */
@@ -342,10 +342,11 @@ hr{
    transform: translateY(0);
 }
 
-.services-list div:hover{
+.services-list div.show:hover{
    background: #0077b6; /* Blue */
    box-shadow: 0px 0px 25px rgba(0, 168, 204, 0.5); /* Soft blue glow */
-   transform: translateY(-10px);
+   transform: translateY(-15px); 
+   transition: 0.3s linear;
    
 }
 
