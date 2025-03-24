@@ -79,7 +79,12 @@ nav ul li a:hover::after{
    width: 100%;
 }
 
-
+nav .fa-solid{
+   display: none;
+   }
+nav span{
+   color: #00a8cc;;
+}
 
 
 /* Header text styling */
@@ -150,12 +155,7 @@ nav ul li a:hover::after{
    100% { border-color: #00a8cc; }
 }
 
-nav .fa-solid{
-   display: none;
-   }
-nav span{
-   color: #00a8cc;;
-}
+
 .custom-shape-divider-bottom-1740669785 {
    position: absolute;
    bottom: 0;
